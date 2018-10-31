@@ -15,6 +15,7 @@ class App extends Component {
       currentAuthor: {}
     };
     this.selectAuthor = this.selectAuthor.bind(this);
+    this.reset = this.reset.bind(this);
   }
   selectAuthor(author) {
     this.setState({ currentAuthor: author });
@@ -29,7 +30,7 @@ class App extends Component {
   }
 
   reset() {
-    this.state.currentAuthor = {};
+    this.setState({ currentAuthor: {} });
   }
 
   render() {
@@ -38,7 +39,7 @@ class App extends Component {
       <div id="app" className="container-fluid">
         <div className="row">
           <div className="col-2">
-            <Sidebar />
+            <Sidebar reset={this.reset} />
           </div>
           <div className="content col-10">{this.currentView()}</div>
         </div>
